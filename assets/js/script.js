@@ -130,6 +130,16 @@ function quizStart() {
     d.on('click', function() {
         nextQuestion('d');
     })
+
+    let timer = setInterval(function(){
+        a.remove();
+        b.remove();
+        c.remove();
+        d.remove();
+        display.remove();
+        endScreen();
+        clearInterval(timer);
+        }, 60000);
 };
 
 function nextQuestion(x) {
@@ -164,11 +174,6 @@ function nextQuestion(x) {
 
     d.text(questions[current].d);
 };
-
-function time() {
-    console.log("Time's Up!")
-    endScreen();
-}
 
 function endScreen() {
     let form = $('<form></form>');
@@ -205,9 +210,6 @@ function endScreen() {
     });
 }
 
-
-
 start.on('click', function() {
-    //setInterval(time, 60000);
     quizStart();
 });
